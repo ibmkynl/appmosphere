@@ -1,0 +1,64 @@
+name: appmosphere
+description: "A weather app."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0-219.0.dev
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+  localization: ^2.1.0
+
+  cupertino_icons: ^1.0.8
+  flutter_launcher_icons:
+
+  #theme
+  flex_color_scheme:
+
+  #network
+  dio:
+
+  #responsive
+  flutter_screenutil:
+
+  #state management
+  provider:
+
+  #dependency injection
+  get_it:
+
+  #local storage
+  hive:
+  hive_flutter:
+  shared_preferences:
+
+  #Api keys, etc
+  flutter_dotenv:
+
+
+dev_dependencies:
+  hive_generator:
+  build_runner:
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/photos/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - .env
+    - assets/i18n/
+    - assets/
+    - assets/photos/
+    - assets/icon/
+
