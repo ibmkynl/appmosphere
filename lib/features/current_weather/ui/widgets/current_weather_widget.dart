@@ -1,4 +1,5 @@
 import 'package:appmosphere/core/error/app_error.dart';
+import 'package:appmosphere/features/city_search/domain/entitiy/city_model.dart';
 import 'package:appmosphere/features/feature_widgets/current_weather_card.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
@@ -9,7 +10,9 @@ import '../../../feature_widgets/error_widget.dart';
 import '../providers/current_weather_provider.dart';
 
 class CurrentWeatherWidget extends StatefulWidget {
-  const CurrentWeatherWidget({super.key});
+  final CityModel? city;
+
+  const CurrentWeatherWidget({super.key, this.city});
 
   @override
   State<CurrentWeatherWidget> createState() => _CurrentWeatherWidgetState();
@@ -24,7 +27,7 @@ class _CurrentWeatherWidgetState extends State<CurrentWeatherWidget> {
 
   Future<void> _fetchCurrentLocationWeather() async {
     try {
-      final cityModel = await LocationService.getUserLocation();
+      final cityModel = widget.city ?? await LocationService.getUserLocation();
 
       await Provider.of<CurrentWeatherProvider>(
         context,

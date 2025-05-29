@@ -1,4 +1,5 @@
 import 'package:appmosphere/core/error/app_error.dart';
+import 'package:appmosphere/features/city_search/domain/entitiy/city_model.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +10,8 @@ import '../../../feature_widgets/forecast_day_list.dart';
 import '../providers/forecast_weather_provider.dart';
 
 class ForecastListWidget extends StatefulWidget {
-  const ForecastListWidget({super.key});
+  final CityModel? city;
+  const ForecastListWidget({super.key, this.city});
 
   @override
   State<ForecastListWidget> createState() => _ForecastListWidgetState();
@@ -24,7 +26,7 @@ class _ForecastListWidgetState extends State<ForecastListWidget> {
 
   Future<void> _fetchForecast() async {
     try {
-      final locationModel = await LocationService.getUserLocation();
+      final locationModel = widget.city ?? await LocationService.getUserLocation();
       await Provider.of<ForecastWeatherProvider>(
         context,
         listen: false,

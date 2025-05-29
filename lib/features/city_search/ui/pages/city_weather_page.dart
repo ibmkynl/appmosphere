@@ -57,7 +57,12 @@ class _CityWeatherPageState extends State<CityWeatherPage> {
             physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [SizedBox(height: 15.h), CurrentWeatherWidget(), SizedBox(height: 30.h), ForecastListWidget()],
+              children: [
+                SizedBox(height: 15.h),
+                CurrentWeatherWidget(city: widget.cityModel),
+                SizedBox(height: 30.h),
+                ForecastListWidget(),
+              ],
             ),
           ),
         ),
